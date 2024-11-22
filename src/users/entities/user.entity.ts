@@ -21,7 +21,7 @@ export default class User {
     @OneToMany(() => Contact, (contact) => contact.user)
     contacts: Contact[];
 
-    @Column()
+    @Column({nullable: true})
     profile_picture_uri: string;
     
 }

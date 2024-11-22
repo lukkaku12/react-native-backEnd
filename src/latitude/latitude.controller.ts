@@ -1,11 +1,13 @@
 // src/latitude/latitude.controller.ts
-import { Controller, Post, Body, Put, Param, Get, NotFoundException, Query } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Get, NotFoundException, Query, UseGuards } from '@nestjs/common';
 import { LatitudeService } from './latitude.service';
 import { CreateLatitudeDto } from './dto/create-latitude.dto';
 import { UpdateLatitudeDto } from './dto/update-latitude.dto';
 import { Latitude } from './entities/latitude.entity';
+import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
 
 @Controller('latitude')
+@UseGuards(JwtAuthGuard)
 export class LatitudeController {
     constructor(private readonly latitudeService: LatitudeService) {}
 

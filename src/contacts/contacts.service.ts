@@ -16,7 +16,12 @@ export class ContactsService {
   ) {}
 
   async findAllContacts(userId: number): Promise<Contact[]> {
-    return await this.contactRepository.find({where: {user: {id: userId}}});
+    try {
+      return await this.contactRepository.find({where: {user: {id: userId}}});
+      
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async createContact(createContactDto: CreateContactDto): Promise<Contact> {

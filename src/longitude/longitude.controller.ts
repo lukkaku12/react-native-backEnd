@@ -1,11 +1,13 @@
 // src/longitude/longitude.controller.ts
-import { Controller, Post, Body, Put, Get, Param, BadRequestException, NotFoundException, Query } from '@nestjs/common';
+import { Controller, Post, Body, Put, Get, Param, BadRequestException, NotFoundException, Query, UseGuards } from '@nestjs/common';
 import { LongitudeService } from './longitude.service';
 import { CreateLongitudeDto } from './dto/create-longitude.dto';
 import { UpdateLongitudeDto } from './dto/update-longitude.dto';
 import Longitude from './entities/longitude.entity';
+import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
 
 @Controller('longitude')
+@UseGuards(JwtAuthGuard)
 export class LongitudeController {
     constructor(private readonly longitudeService: LongitudeService) {}
 

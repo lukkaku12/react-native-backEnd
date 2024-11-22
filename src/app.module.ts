@@ -9,6 +9,7 @@ import User from './users/entities/user.entity';
 import Contact from './contacts/entities/contact.entity';
 import Longitude from './longitude/entities/longitude.entity';
 import { Latitude } from './latitude/entities/latitude.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,6 @@ import { Latitude } from './latitude/entities/latitude.entity';
         rejectUnauthorized:false
       }
     })
-    }), LatitudeModule, LongitudeModule],
+    }), LatitudeModule, LongitudeModule, AuthModule],
 })
 export class AppModule {}
