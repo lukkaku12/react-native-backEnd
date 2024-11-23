@@ -10,11 +10,13 @@ import Contact from './contacts/entities/contact.entity';
 import Longitude from './longitude/entities/longitude.entity';
 import { Latitude } from './latitude/entities/latitude.entity';
 import { AuthModule } from './auth/auth.module';
+import { S3Module } from './s3/s3.module';
+import { ProfilePictureModule } from './profile-picture/profile-picture.module';
 
 @Module({
   imports: [
   ConfigModule.forRoot({isGlobal: true}), 
-  ContactsModule, UsersModule, TypeOrmModule.forRootAsync({
+  ContactsModule, UsersModule, S3Module, TypeOrmModule.forRootAsync({
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: (configService: ConfigService) => ({
@@ -31,6 +33,6 @@ import { AuthModule } from './auth/auth.module';
         rejectUnauthorized:false
       }
     })
-    }), LatitudeModule, LongitudeModule, AuthModule],
+    }), LatitudeModule, LongitudeModule, AuthModule, ProfilePictureModule],
 })
 export class AppModule {}
